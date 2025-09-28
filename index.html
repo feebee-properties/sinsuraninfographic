@@ -14,67 +14,38 @@
         .container {
             max-width: 1200px;
         }
-        .table-header {
+        .header-bg {
             background-color: #073B4C;
-            color: white;
+        }
+        .card-neutral {
+            border-top: 4px solid #118AB2;
+        }
+        .card-positive {
+            border-top: 4px solid #06D6A0;
+        }
+        .card-negative {
+            border-top: 4px solid #FF6B6B;
+        }
+        .data-label {
+            font-size: 0.7rem;
+            color: #6c757d;
+        }
+        .data-value {
+            font-size: 1.25rem;
             font-weight: 700;
-            text-align: center;
-            font-size: 0.8rem;
-            padding: 0.5rem;
+            margin-top: 0.2rem;
+            line-height: 1.2;
         }
-        .table-row-group {
-            background-color: #ffffff;
-        }
-        .row-heading {
-            background-color: #e9ecef;
-            font-weight: 600;
-            color: #495057;
-            text-align: left;
-            font-size: 0.8rem;
-            padding: 0.5rem;
-        }
-        .data-cell {
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.8rem;
-            padding: 0.5rem;
-        }
-        .calculation-cell {
-            text-align: center;
-            font-size: 0.65rem;
-            color: #495057;
-            padding: 0.5rem;
-            font-weight: 400;
-            background-color: #f4f6f9;
-        }
-        .negative {
-            color: #FF6B6B;
-            font-weight: 700;
+        .data-calc {
+            font-size: 0.6rem;
+            color: #6c757d;
+            margin-top: 0.1rem;
         }
         .positive {
             color: #06D6A0;
-            font-weight: 700;
         }
-        .neutral {
-            color: #118AB2;
-        }
-        /* FIX: Ensure sticky column alignment and background consistency */
-        .sticky-col {
-            position: sticky;
-            left: 0;
-            z-index: 10; 
-        }
-        .table-header.sticky-col {
-             background-color: #073B4C;
-             z-index: 20; 
-        }
-        .table-row-group .row-heading.sticky-col {
-            /* Inherited background-color: #e9ecef */
-            z-index: 10;
-        }
-        .table-row-group .calculation-cell.sticky-col {
-            /* Inherited background-color: #f4f6f9 */
-            z-index: 10;
+        .negative {
+            color: #FF6B6B;
         }
     </style>
 </head>
@@ -82,141 +53,132 @@
 
     <div class="container mx-auto bg-white rounded-xl shadow-2xl overflow-hidden">
         
-        <header class="p-4 md:p-6 bg-[#073B4C] text-white text-center">
+        <header class="p-4 md:p-6 header-bg text-white text-center">
             <h1 class="text-2xl sm:text-3xl font-extrabold">Sinsuran Hostel Investment Scenario Analysis</h1>
             <p class="text-md mt-1 font-light text-[#FFD166]">Transparent Financial Outcomes for 3 Investment Paths</p>
         </header>
 
-        <div class="p-2 sm:p-4">
-            <p class="mb-4 text-xs sm:text-sm text-gray-600">
-                This analysis uses a **Conservative Operational Model** (60% Occupancy for 20 days/month) to demonstrate baseline profitability.
+        <div class="p-4 sm:p-6">
+            <p class="mb-6 text-sm text-gray-600">
+                This analysis uses a **Conservative Operational Model** (**60% Occupancy for 20 days/month** at **RM 60/head**) to demonstrate profitability under realistic, lower-utilization conditions.
             </p>
 
-            <!-- Key Assumptions Card (Condensed for mobile) -->
-            <div class="bg-gray-100 p-3 rounded-lg mb-4 border border-gray-300 text-xs">
-                <h3 class="font-bold text-gray-700 mb-1">Key Assumptions:</h3>
-                <div class="flex flex-wrap justify-between">
-                    <p>• Rate: RM 60/head</p>
-                    <p>• Occupancy: 60% (20 days)</p>
-                    <p>• Annual Revenue: RM 397,440</p>
+            <!-- Key Assumptions Card -->
+            <div class="bg-gray-100 p-3 rounded-lg mb-6 border border-gray-300 text-xs text-center font-semibold">
+                <h3 class="text-base text-gray-700 mb-1">Key Investment Metrics:</h3>
+                <p>• **Property Value:** RM 2.2 Million • **Total Beds:** 46 • **Cap Gain (10 Yrs):** RM 758,168</p>
+            </div>
+
+            <!-- SCENARIO CARDS (Vertical Alignment) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <!-- CARD A: Buy & Self-Operate -->
+                <div class="bg-white p-4 rounded-lg shadow-lg card-neutral">
+                    <h3 class="text-xl font-extrabold mb-3 text-[#118AB2]">Plan A: Buy & Self-Operate</h3>
+                    <p class="text-xs text-gray-500 mb-4">Ultimate wealth builder through long-term asset appreciation and active management.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="border-b pb-2">
+                            <p class="data-label">Initial Cash Outlay</p>
+                            <p class="data-value neutral">~RM 330,000</p>
+                            <p class="data-calc">(10% DP + Fees + RM 50k Reno)</p>
+                        </div>
+                        <div class="border-b pb-2">
+                            <p class="data-label">Annual Gross Income</p>
+                            <p class="data-value neutral">RM 397,440</p>
+                            <p class="data-calc">(46 beds x 60% x 20 days) x RM 60 x 12 months</p>
+                        </div>
+                        <div class="border-b pb-2">
+                            <p class="data-label">Annual Net Profit / (Loss)</p>
+                            <p class="data-value positive">RM 17,964</p>
+                            <p class="data-calc">RM 397,440 - RM 379,476 Fixed Costs</p>
+                        </div>
+                        <div class="border-b pb-2">
+                            <p class="data-label">Annualized ROI / Yield</p>
+                            <p class="data-value positive">**5.44% ROI**</p>
+                            <p class="data-calc">PROFIT ACHIEVED (Covers all costs, including loan)</p>
+                        </div>
+                        <div class="pt-2">
+                            <p class="data-label">Total Projected Wealth (10 Yrs)</p>
+                            <p class="data-value positive text-lg">**RM 937,808**</p>
+                            <p class="data-calc">(Net Profit x 10) + Cap Gain</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD B: Buy Asset & Lease Business -->
+                <div class="bg-white p-4 rounded-lg shadow-lg card-neutral">
+                    <h3 class="text-xl font-extrabold mb-3 text-[#118AB2]">Plan B: Buy Asset & Lease Business</h3>
+                    <p class="text-xs text-gray-500 mb-4">Passive investment: secures the long-term asset and leases the operation for stable income.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="border-b pb-2">
+                            <p class="data-label">Initial Cash Outlay</p>
+                            <p class="data-value neutral">~RM 280,000</p>
+                            <p class="data-calc">(10% DP + Fees)</p>
+                        </div>
+                        <div class="border-b pb-2">
+                            <p class="data-label">Annual Gross Income</p>
+                            <p class="data-value neutral">RM 102,000</p>
+                            <p class="data-calc">RM 8,500 rental x 12 months</p>
+                        </div>
+                        <div class="border-b pb-2">
+                            <p class="data-label">Annual Net Profit / (Loss)</p>
+                            <p class="data-value negative">-RM 24,476</p>
+                            <p class="data-calc">Rental Income - Loan/Maint. (Loss is debt-related)</p>
+                        </div>
+                        <div class="border-b pb-2">
+                            <p class="data-label">Annualized ROI / Yield</p>
+                            <p class="data-value negative">Negative ROI</p>
+                            <p class="data-calc">Requires higher premium rental (RM 12k/mo) to break even.</p>
+                        </div>
+                        <div class="pt-2">
+                            <p class="data-label">Total Projected Wealth (10 Yrs)</p>
+                            <p class="data-value positive text-lg">**RM 513,408**</p>
+                            <p class="data-calc">Cap Gain offsets 10 years of rental cash flow deficit.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD C: Takeover Business Only -->
+                <div class="bg-white p-4 rounded-lg shadow-lg card-positive">
+                    <h3 class="text-xl font-extrabold mb-3 positive">Plan C: Takeover Business Only</h3>
+                    <p class="text-xs text-gray-500 mb-4">Cash Flow King: Low-capital entry focusing purely on maximum operational profit.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="border-b pb-2">
+                            <p class="data-label">Initial Cash Outlay</p>
+                            <p class="data-value positive">RM 105,000</p>
+                            <p class="data-calc">(RM 55k Takeover Fee + RM 50k Reno)</p>
+                        </div>
+                        <div class="border-b pb-2">
+                            <p class="data-label">Annual Gross Income</p>
+                            <p class="data-value neutral">RM 397,440</p>
+                            <p class="data-calc">(46 beds x 60% x 20 days) x RM 60 x 12 months</p>
+                        </div>
+                        <div class="border-b pb-2">
+                            <p class="data-label">Annual Net Profit / (Loss)</p>
+                            <p class="data-value positive">RM 139,440</p>
+                            <p class="data-calc">RM 397,440 Revenue - RM 258,000 Fixed Costs</p>
+                        </div>
+                        <div class="border-b pb-2">
+                            <p class="data-label">Annualized ROI / Yield</p>
+                            <p class="data-value positive">**132.8% ROI**</p>
+                            <p class="data-calc">High cash-on-cash return on RM 105k investment.</p>
+                        </div>
+                        <div class="pt-2">
+                            <p class="data-label">Breakeven Threshold</p>
+                            <p class="data-value neutral">Net Profit Achieved!</p>
+                            <p class="data-calc">Low initial investment yields fantastic annual cash flow.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- SCENARIO TABLE -->
-            <div class="overflow-x-auto rounded-lg border border-gray-200">
-                <table class="min-w-[600px] divide-y divide-gray-200">
-                    <thead>
-                        <tr>
-                            <th class="table-header sticky-col min-w-[150px]">Metric</th>
-                            <th class="table-header min-w-[150px]">Plan A: Buy & Self-Operate</th>
-                            <th class="table-header min-w-[150px]">Plan B: Buy Asset & Lease Business</th>
-                            <th class="table-header min-w-[150px]">Plan C: Takeover Business Only</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-200">
-                        
-                        <!-- ROW: Initial Investment -->
-                        <tr class="table-row-group">
-                            <td class="row-heading sticky-col" style="background-color: #e9ecef;">Initial Cash Outlay</td>
-                            <td class="data-cell neutral">~RM 330,000</td>
-                            <td class="data-cell neutral">~RM 280,000</td>
-                            <td class="data-cell neutral">RM 105,000</td>
-                        </tr>
-                        <tr class="table-row-group">
-                            <td class="calculation-cell sticky-col" style="background-color: #f4f6f9;">Calculation</td>
-                            <td class="calculation-cell">(10% DP + Fees) + RM 50k Reno</td>
-                            <td class="calculation-cell">(10% DP + Fees)</td>
-                            <td class="calculation-cell">(RM 55k Takeover Fee + RM 50k Reno)</td>
-                        </tr>
-                        
-                        <!-- ROW: Primary Income Stream -->
-                        <tr class="table-row-group">
-                            <td class="row-heading sticky-col" style="background-color: #e9ecef;">Annual Gross Income</td>
-                            <td class="data-cell neutral">RM 397,440</td>
-                            <td class="data-cell neutral">RM 102,000</td>
-                            <td class="data-cell neutral">RM 397,440</td>
-                        </tr>
-                        <tr class="table-row-group">
-                            <td class="calculation-cell sticky-col" style="background-color: #f4f6f9;">Calculation</td>
-                            <td class="calculation-cell">(46 beds x 60% x 20 days) x RM 60 x 12 months</td>
-                            <td class="calculation-cell">RM 8,500 rental x 12 months</td>
-                            <td class="calculation-cell">(46 beds x 60% x 20 days) x RM 60 x 12 months</td>
-                        </tr>
-
-                        <!-- ROW: Total Fixed Costs -->
-                        <tr class="table-row-group">
-                            <td class="row-heading sticky-col" style="background-color: #e9ecef;">Total Annual Fixed Costs</td>
-                            <td class="data-cell neutral">RM 379,476</td>
-                            <td class="data-cell neutral">RM 126,476</td>
-                            <td class="data-cell neutral">RM 258,000</td>
-                        </tr>
-                        <tr class="table-row-group">
-                            <td class="calculation-cell sticky-col" style="background-color: #f4f6f9;">Calculation</td>
-                            <td class="calculation-cell">(Loan Repayment) + (Staff + Utility)</td>
-                            <td class="calculation-cell">(Loan Repayment) + (Est. Maint.)</td>
-                            <td class="calculation-cell">(Annual Rent) + (Staff + Utility)</td>
-                        </tr>
-
-                        <!-- ROW: Projected Capital Gain (10 Yrs) -->
-                        <tr class="table-row-group">
-                            <td class="row-heading sticky-col" style="background-color: #e9ecef;">Projected Capital Gain (10 Yrs)</td>
-                            <td class="data-cell positive">RM 758,168</td>
-                            <td class="data-cell positive">RM 758,168</td>
-                            <td class="data-cell neutral">N/A</td>
-                        </tr>
-                        <tr class="table-row-group">
-                            <td class="calculation-cell sticky-col" style="background-color: #f4f6f9;">Calculation</td>
-                            <td class="calculation-cell">RM 2.2M * (1.03)¹⁰ - RM 2.2M</td>
-                            <td class="calculation-cell">RM 2.2M * (1.03)¹⁰ - RM 2.2M</td>
-                            <td class="calculation-cell">N/A (No Asset Ownership)</td>
-                        </tr>
-
-                        <!-- NEW ROW: Total Projected Wealth (10 Yrs) -->
-                        <tr class="table-row-group">
-                            <td class="row-heading sticky-col" style="background-color: #e9ecef;">Total Projected Wealth (10 Yrs)</td>
-                            <td class="data-cell positive">**RM 937,800**</td>
-                            <td class="data-cell positive">**RM 513,404**</td>
-                            <td class="data-cell neutral">N/A</td>
-                        </tr>
-                        <tr class="table-row-group">
-                            <td class="calculation-cell sticky-col" style="background-color: #f4f6f9;">Calculation</td>
-                            <td class="calculation-cell">(RM 17,964 x 10) + RM 758,168</td>
-                            <td class="calculation-cell">(-RM 24,476 x 10) + RM 758,168</td>
-                            <td class="calculation-cell">N/A (No Asset Ownership)</td>
-                        </tr>
-                        <!-- END NEW ROW -->
-
-                         <!-- ROW: Annual Net Profit/(Loss) -->
-                        <tr class="table-row-group">
-                            <td class="row-heading sticky-col" style="background-color: #e9ecef;">Annual Net Profit / (Loss)</td>
-                            <td class="data-cell positive">RM 17,964</td>
-                            <td class="data-cell negative">-RM 24,476</td>
-                            <td class="data-cell positive">RM 139,440</td>
-                        </tr>
-
-                         <!-- ROW: ROI/Yield -->
-                        <tr class="table-row-group">
-                            <td class="row-heading sticky-col" style="background-color: #e9ecef;">Annualized ROI / Yield</td>
-                            <td class="data-cell positive">**5.44% ROI**</td>
-                            <td class="data-cell negative">Negative ROI</td>
-                            <td class="data-cell positive">**132.8% ROI**</td>
-                        </tr>
-
-                        <!-- ROW: Breakeven Threshold -->
-                        <tr class="table-row-group">
-                            <td class="row-heading sticky-col" style="background-color: #e9ecef;">Breakeven Point</td>
-                            <td class="data-cell neutral">**PROFIT ACHIEVED.** Yields 5.44% ROI, covering all costs, including the loan.</td>
-                            <td class="data-cell neutral">Loss is debt-related. Requires higher rental premium (RM 12k/mo) to break even.</td>
-                            <td class="data-cell neutral">**Net Profit Achieved.** Low initial investment yields a fantastic cash-on-cash return.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="mt-4 p-3 bg-yellow-100 rounded-lg border-l-4 border-yellow-500">
-                <h3 class="font-bold text-md text-yellow-800">Conclusion for Co-Brokers:</h3>
-                <p class="text-xs text-yellow-700 mt-1">
-                    **Plan C (Takeover Business Only)** is the most profitable path, delivering a **132.8% cash-on-cash return**. Crucially, **Plan A (Buy & Self-Operate)** now shows a positive **5.44% ROI**, proving the inherent financial viability of the asset.
+            <div class="mt-8 p-3 bg-yellow-100 rounded-lg shadow-md border-l-4 border-yellow-500">
+                <h3 class="font-bold text-lg text-yellow-800">Key Conclusion:</h3>
+                <p class="text-sm text-yellow-700 mt-2">
+                    For **immediate cash flow and ROI**, **Plan C (Takeover Business)** is the undisputed winner, delivering a **132.8% cash-on-cash return**. For **long-term wealth building**, **Plan A (Buy & Self-Operate)** is the superior asset, showing nearly **RM 938k in total projected wealth** over 10 years.
                 </p>
             </div>
         </div>
